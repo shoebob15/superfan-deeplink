@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "DEV_ID.org.clc.superfan-app",
+        "paths": ["/redeem/*"]
+        ]
+      }
+    ]
+  },
+}
