@@ -15,7 +15,7 @@
         
         // try to open the app first
         if (userAgent.includes('iPhone') || userAgent.includes('iPad')) {
-            window.location.href = `superfan://redeem/${eventId}`;
+            window.location.replace(`superfan://redeem/${eventId}`);
             
             // fallback to App Store after 2 seconds
             setTimeout(() => {
