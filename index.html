@@ -11,11 +11,11 @@
     
     <script>
         const userAgent = navigator.userAgent;
-        const productId = window.location.pathname.split('/').pop();
+        const eventId = window.location.pathname.split('?').pop();
         
         // try to open the app first
         if (userAgent.includes('iPhone') || userAgent.includes('iPad')) {
-            window.location.href = `superfan-app://product/${productId}`;
+            window.location.href = `superfan://redeem/${eventId}`;
             
             // fallback to App Store after 2 seconds
             setTimeout(() => {
