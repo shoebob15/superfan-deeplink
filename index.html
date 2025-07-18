@@ -11,11 +11,17 @@
     
     <script>
         const userAgent = navigator.userAgent;
-        const eventId = window.location.pathname.split('?').pop();
+
+        // extract url params
+        const params = new URLSearchParams(window.location.search);
+
+        const event_id = params.get('event_id');
+        const code = params.get('code');
+
         
         // try to open the app first
         if (userAgent.includes('iPhone') || userAgent.includes('iPad')) {
-            window.location.replace(`superfan://redeem/${eventId}`);
+            window.location.replace(`superfan://redeem?event_id=${event_id}&code=${code}`);
             
             // fallback to App Store after 2 seconds
             setTimeout(() => {
@@ -23,7 +29,7 @@
             }, 2000);
             
         } else if (userAgent.includes('Android')) {
-            window.location.href = `intent://product/${productId}#Intent;scheme=superfan-app;package=org.clc.superfan-app;S.browser_fallback_url=https://play.google.com/store/apps/details?id=org.clc.superfan;end`;
+            window.location.href = `intent://product?event_id=${event_id}&code=${code}#Intent;scheme=superfan-app;package=org.clc.superfan-app;S.browser_fallback_url=https://play.google.com/store/apps/details?id=org.clc.superfan;end`;
         } else {
             document.getElementById('download-links').innerHTML = `
                 <a href="https://apps.apple.com/app/APP_ID">Download for iOS</a><br>
